@@ -1,0 +1,66 @@
+<form>
+    <div class="form-header">
+        <h4>Category</h4>
+        <button type="button" (click)="openModal(add)" class="btn add btn-dark">Add</button>
+    </div>
+
+    <ng-template #add>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Add category</h4>
+            <button class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <img src="assets/images/times-solid.svg" class="img">
+            </button>
+        </div>
+        <div class="input">
+            <input type="text" class="categoryName" [(ngModel)]="categoryName" name="categoryName"
+                placeholder="name here..">
+        </div>
+        <hr>
+        <div class="buttons">
+            <button class="btn-close" (click)="modalRef.hide()">Close</button>
+            <button *ngIf="check" class="submit btn btn-dark" (click)="addCategory()" (click)="modalRef.hide()"
+                [style.backgroundColor]="checkColor">Add</button>
+            <button *ngIf="!check" class="save btn btn-dark" (click)="saveEditCategory()" (click)="modalRef.hide()">Save
+                edit</button>
+        </div>
+    </ng-template>
+
+    <div class="form-main">
+        <div class="form-group">
+            <input [(ngModel)]="searchName" name="searchName" type="text" class="form-control" id="searchName"
+                placeholder="filter category..">
+        </div>
+
+        <hr>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col" class="w-75">Name</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cat of categories | search: searchName">
+                    <td scope="row">{{ cat.id }}</td>
+                    <td scope="row" class="w-75">{{ cat.name }}</td>
+                    <td>
+                        <button class="btn btn-dark" (click)="openModal(add)" (click)="editCategory(cat)">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-dark" (click)="openModal(template)">Delete</button>
+                    </td>
+                    <ng-template #template>
+                        <div class="modal-buttons mr-1">
+                            <button class="btn-close del" (click)="modalRef.hide()">Dismiss</button>
+                            <button class="del btn btn-danger" (click)="deleteCategory(cat)"
+                                (click)="modalRef.hide()">Delete</button>
+                        </div>
+                    </ng-template>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</form>

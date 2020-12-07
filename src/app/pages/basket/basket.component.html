@@ -1,0 +1,91 @@
+<div class="container-fluid mt-2">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Total</th>
+        <th scope="col">Delete</th>
+      </tr>
+
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let prod of basket; let i=index">
+        <td scope="row">
+          <span class="text-danger remove" (click)="removeProduct(prod)">X</span>
+        </td>
+        <td scope="row"><img class="icon" [src]="prod.image" alt=""></td>
+        <td scope="row">{{ prod.name }}</td>
+        <td scope="row">{{ prod.price }}</td>
+        <td scope="row">{{ prod.price * prod.count }}</td>
+        <td scope="row">
+          <div class="d-flex justify-content-between counter">
+            <button class="btn danger button" (click)="productCount(prod, false)">-</button>
+            <input type="text" class="count" max-lenght="3" [value]="prod.count">
+            <button class="btn btn-success button" (click)="productCount(prod, true)">+</button>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="8">
+          <h2 class="text-left text-danger">Загалом: {{ totalPrice }} грн</h2>
+          <button class="btn btn-success" (click)="openModal(add)">Оплатити</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #add>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Оплата</h4>
+      <button class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <img src="assets/images/times-solid.svg" class="img">
+      </button>
+    </div>
+    <div class="input">
+
+      <div class="block d-flex justify-content-between">
+        <label for="userName">Ім'я</label>
+        <input type="text" class="w-50 rounded border" [(ngModel)]="userName" name="userName" id="userName"
+          placeholder="name here..">
+      </div>
+
+      <div class="block d-flex justify-content-between">
+        <label for="userEmail">Е-мейл:</label>
+        <input type="email" class="w-50 rounded border" [(ngModel)]="userEmail" name="userEmail" id="userEmail"
+          placeholder="email here..">
+      </div>
+
+      <div class="block d-flex justify-content-between">
+        <label for="userNumber">Номер телефону:</label>
+        <input type="text" class="w-50 rounded border" [(ngModel)]="userNumber" name="userNumber" id="userNumber"
+          placeholder="number here..">
+      </div>
+
+      <div class="block d-flex justify-content-between">
+        <label for="userLocation">Вулиця:</label>
+        <input type="text" [(ngModel)]="userLocation" name="userLocation" class="w-50 rounded border" id="userLocation"
+          placeholder="street here..">
+      </div>
+
+      <div class="block d-flex justify-content-between">
+        <label for="payment">Спосіб оплати:</label>
+        <select [(ngModel)]="payment" name="payment" class="w-50 rounded border" id="payment">
+          <option>Готівка</option>
+          <option>Картка</option>
+        </select>
+      </div>
+
+    </div>
+    <hr>
+    <div class="buttons d-flex justify-content-end">
+      <button class="btn-close" (click)="modalRef.hide()">Close</button>
+      <button class="submit btn btn-dark" (click)="addOrder()" (click)="modalRef.hide()">Оплатити</button>
+    </div>
+  </ng-template>
+
+
+</div>

@@ -1,0 +1,77 @@
+.danger {
+  background-color: #dd2033;
+  color: #fefefe;
+}
+
+.button {
+  width: 37px;
+}
+
+.counter {
+  width: 150px;
+  margin: 20px auto;
+}
+
+.count {
+  width: 40px;
+  height: 40px;
+  padding: 13px;
+}
+
+th,
+tr {
+  text-align: center;
+}
+
+td{
+  line-height: 73px;
+}
+
+.text-danger:hover {
+  cursor: pointer;
+}
+
+.icon {
+  height: 80px;
+  width: 80px;
+  margin: 0px auto;
+  display: flex;
+}
+
+.remove{
+  font-weight: 700;
+}
+
+.close{
+  width: 45px;
+  height: 45px;
+}
+
+.close:hover,
+.btn-close {
+  outline: none;
+}
+
+.btn-close {
+  width: 70px;
+  height: 40px;
+  background-color: gray;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  margin: 5px;
+}
+
+.submit {
+  width: 95px;
+  height: 40px;
+  margin: 5px;
+}
+
+.block{
+  padding: 10px;
+}
+
+.block input{
+  padding-left: 10px;
+}

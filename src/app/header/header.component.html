@@ -1,0 +1,105 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand text-light" href="#">Pizza</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link  text-secondary">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  text-secondary" [routerLink]="[ '/products' ]">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  text-secondary" [routerLink]="[ '/blog' ]">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  text-secondary">About</a>
+                </li>
+            </ul>
+        </div>
+        <div class="headerRightBar">
+            <div class="headerSection header-cart">
+                <a [routerLink]="[ '/basket' ]" class="basket">
+                    <img src="assets/images/shopping-cart.svg" alt="shopping-cart">
+                    <span class="basketPrice">
+                        <i>{{ totalPrice }} грн</i>
+                    </span>
+                </a>
+            </div>
+            <div *ngIf="!change" class="headerSection user-block">
+                <a (click)="signModal(sign)">Увійти</a>
+            </div>
+            <div *ngIf="change" class="headerSection user-block">
+                <a (click)="openDel(signOut)">Вийти</a>
+            </div>
+            <div *ngIf="acc" class="headerSection user-block">
+                <img class="img" [src]="userImage" [routerLink]="[ '/profile' ]" alt="">
+            </div>
+            <div *ngIf="admin" class="headerSection user-block">
+                <a [routerLink]="[ '/admin-blog' ]">Admin</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<ng-template #sign>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Modal</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div *ngIf="!check">
+            <form>
+                <div class="form-group">
+                    <label for="userEmail">Email address</label>
+                    <input type="email" class="form-control" [(ngModel)]="userEmail" name="userEmail" id="userEmail">
+                </div>
+                <div class="form-group">
+                    <label for="userPass">Password</label>
+                    <input type="password" class="form-control" [(ngModel)]="userPass" name="userPass" id="userPass">
+                </div>
+                <button *ngIf="!check" (click)="signIN()" (click)="modalRef.hide()" type="submit"
+                    class="btn btn-primary">Sign In</button>
+                <a class="link" *ngIf="!check" (click)="goSignUp()">Sign Up</a>
+            </form>
+        </div>
+        <div *ngIf="check">
+            <form>
+                <div class="form-group">
+                    <label for="userName">Name:</label>
+                    <input type="text" class="form-control" [(ngModel)]="userName" name="userName" id="userName">
+                </div>
+                <div class="form-group">
+                    <label for="userCity">City:</label>
+                    <input type="text" class="form-control" [(ngModel)]="userCity" name="userCity" id="userCity">
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">Email address</label>
+                    <input type="email" class="form-control" [(ngModel)]="userEmail" name="userEmail" id="userEmail">
+                </div>
+                <div class="form-group">
+                    <label for="userPass">Password</label>
+                    <input type="password" class="form-control" [(ngModel)]="userPass" name="userPass" id="userPass">
+                </div>
+                <button *ngIf="check" (click)="signUP()" (click)="modalRef.hide()" type="submit"
+                    class="btn btn-primary">Sign Up</button>
+                <a class="link" *ngIf="check" (click)="goSignUp()">Sign In</a>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #signOut>
+    <div class="modal-buttons mr-1">
+        <button class="btn-close del" (click)="modalRef.hide()">Dismiss</button>
+        <button class="del btn btn-danger" (click)="signOUT()" (click)="modalRef.hide()">Sign Out</button>
+    </div>
+</ng-template>

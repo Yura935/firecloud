@@ -1,0 +1,29 @@
+<div class="row clear-md-3 clear-lg-3 clear-sm-2">
+  <div class="myBlock ml-4" *ngFor="let prod of products">
+    <div class="productThumbnail productItemAnimate animated">
+      <img class="prodImage" [attr.src]="prod.image" alt="">
+      <div class="productInfoWrapp">
+        <div class="productDescription normall">
+          <div class="h5 as">
+            <a>{{ prod.name }}</a>
+          </div>
+          <p>{{ prod.description }}</p>
+        </div>
+        <hr>
+        <div class="productOrder">
+          <div class="productPrice">
+            <span>{{ prod.price * prod.count }}</span> <i> грн</i>
+          </div>
+          <div class="productCountWrapper">
+            <div class="d-flex justify-content-between counter">
+              <button class="btn danger button" (click)="productCount(prod, false)">-</button>
+              <input type="text" class="count" max-lenght="3" [value]="prod.count">
+              <button class="btn btn-success button" (click)="productCount(prod, true)">+</button>
+            </div>
+          </div>
+          <div class="button buttonAdd add-to-cart-product" (click)="addToBasket(prod)">Замовити</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

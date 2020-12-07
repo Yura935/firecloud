@@ -1,0 +1,115 @@
+<form>
+    <div class="form-header">
+        <h4>Products</h4>
+        <button type="button" (click)="openModal(add)" class="btn add btn-dark">Add</button>
+    </div>
+
+    <ng-template #add>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Add product</h4>
+            <button class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <img src="assets/images/times-solid.svg" class="img">
+            </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="d-flex justify-content-between form-group">
+                    <label for="chooseCategory">Category: </label>
+                    <select (change)="setCategory()" [(ngModel)]="categoryName" name="categoryName"
+                        class="w-75 rounded border" id="categoryName">
+                        <option *ngFor="let cat of categories">
+                            {{ cat.name }}
+                        </option>
+                    </select>
+                </div>
+                <div class="d-flex justify-content-between form-group">
+                    <label for="productName">Name:</label>
+                    <input [(ngModel)]="productName" name="productName" type="text" class="w-75 rounded border"
+                        id="productName">
+                </div>
+
+                <div class="d-flex justify-content-between form-group">
+                    <label for="productDescription">Description:</label>
+                    <textarea [(ngModel)]="productDescription" name="productDescription" class="w-75 rounded border"
+                        cols="3" rows="3" id="productDescription"></textarea>
+                </div>
+
+                <div class="d-flex justify-content-between form-group">
+                    <label for="productPrice">Price:</label>
+                    <input [(ngModel)]="productPrice" name="productPrice" type="number" class="w-75 rounded border"
+                        id="productPrice">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="categoryIcon" (change)="uploadFile($event)">
+                        <label class="custom-file-label" for="categoryIcon">Choose file</label>
+                    </div>
+                </div>
+                <div class="progress mb-3">
+                    <div class="progress-bar" [style.width]="percent ? (uploadPercent | async) + '%' : '100%'"
+                        role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="uploadText" *ngIf="!percent">
+                    <p>File uploaded. Now you can add product.</p>
+                </div>
+            </form>
+        </div>
+
+        <hr>
+        <div class="buttons">
+            <button class="btn-close" (click)="modalRef.hide()">Close</button>
+            <button *ngIf="check" class="submit btn btn-dark" (click)="addProduct()" (click)="modalRef.hide()"
+                [style.backgroundColor]="checkColor">Add</button>
+            <button *ngIf="!check" class="save btn btn-dark" (click)="saveEditProduct()" (click)="modalRef.hide()">Save
+                edit</button>
+        </div>
+    </ng-template>
+
+    <div class="form-main">
+        <div class="form-group">
+            <input [(ngModel)]="searchName" name="searchName" type="text" class="form-control" id="searchName"
+                placeholder="filter products..">
+        </div>
+
+        <hr>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let prod of products | search: searchName">
+                    <td scope="row" class="">{{ prod.id }}</td>
+                    <td scope="row" class="w-25">{{ prod.category.name }}</td>
+                    <td scope="row" class="">{{ prod.name }}</td>
+                    <td scope="row" class="w-25">{{ prod.description }}</td>
+                    <td scope="row" class="w-25">{{ prod.price }}</td>
+                    <td scope="row" class="w-50"><img class="icon" [src]="prod.image" alt=""></td>
+                    <td>
+                        <button class="btn btn-dark" (click)="openModal(add)" (click)="editProduct(prod)">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-dark" (click)="openModal(template)">Delete</button>
+                    </td>
+                    <ng-template #template>
+                        <div class="modal-buttons mr-1">
+                            <button class="btn-close del" (click)="modalRef.hide()">Dismiss</button>
+                            <button class="del btn btn-danger" (click)="deleteProduct(prod)"
+                                (click)="modalRef.hide()">Delete</button>
+                        </div>
+                    </ng-template>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</form>

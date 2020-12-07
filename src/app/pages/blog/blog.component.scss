@@ -1,0 +1,21 @@
+.post {
+  margin-top: 10px;
+}
+
+.block {
+  width: 33.3%;
+  padding: 15px;
+  margin: 0;
+}
+
+.main {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.post:hover {
+  transition: transform 0.3s ease-out;
+  transform: translateY(-0.15rem);
+  box-shadow: 0px 3px 15px #2c2c2c;
+  cursor: pointer;
+}

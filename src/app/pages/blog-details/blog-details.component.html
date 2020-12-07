@@ -1,0 +1,6 @@
+<div class="block">
+    <h1>{{ blog?.title }}</h1>
+    <img [attr.src]="blog?.image" alt="">
+    <p>{{ blog?.text }}</p>
+    <button (click)="location.back()" class="btn btn-info btn-back">Back</button>
+</div>

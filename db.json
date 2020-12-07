@@ -1,0 +1,140 @@
+{
+  "blogs": [
+    {
+      "id": 1,
+      "title": "Title 1",
+      "text": "some text some text",
+      "date": "2020-11-21T14:36:15.753Z",
+      "author": "Someone",
+      "image": "https://firebasestorage.googleapis.com/v0/b/blog-details-77f5a.appspot.com/o/images%2F%D0%A2%D0%B5%D1%85%D0%B0%D1%81_300dpi-min.jpg?alt=media&token=c91e0daf-2274-432d-a0ab-48d733581164"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "pizza"
+    },
+    {
+      "name": "salad",
+      "id": 2
+    },
+    {
+      "name": "drinks",
+      "id": 3
+    }
+  ],
+  "products": [
+    {
+      "category": {
+        "id": 1,
+        "name": "pizza"
+      },
+      "name": "Піца La П’єц",
+      "description": "соус томатний, шинка, баварські ковбаски, сир моцарела, ковбаса салямі, прошуто.",
+      "price": 177,
+      "count": 1,
+      "image": "https://firebasestorage.googleapis.com/v0/b/blog-details-77f5a.appspot.com/o/images%2FLA-P_yets-1.png?alt=media&token=72d9d985-cfe4-4e49-8d3c-35c23b64ef8b",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "category": {
+        "name": "salad",
+        "id": 2
+      },
+      "name": "Салат Цезар зі смаженим курячим філе",
+      "description": "Салат айсберг, помідори, куряче м`ясо, сир пармезан, перепелині яйця.",
+      "price": 135,
+      "count": 1,
+      "image": "https://firebasestorage.googleapis.com/v0/b/blog-details-77f5a.appspot.com/o/images%2FTSezar-z-kurkoyu.png?alt=media&token=8cd45513-69a1-4f50-9386-f2f5719fe2cd"
+    },
+    {
+      "category": {
+        "name": "drinks",
+        "id": 3
+      },
+      "name": "Апельсиновий нектар з м'якоттю, 1 л, ТМ “RICH”",
+      "description": "Апельсиновий нектар з м'якоттю, 1 л, ТМ “RICH”",
+      "price": 42,
+      "count": 1,
+      "image": "https://firebasestorage.googleapis.com/v0/b/blog-details-77f5a.appspot.com/o/images%2Frich_orange.jpg?alt=media&token=cbe2879e-41fd-4e5d-be9e-076361c31d96",
+      "id": 3
+    },
+    {
+      "category": {
+        "id": 1,
+        "name": "pizza"
+      },
+      "name": "Капрічоза",
+      "description": "соус томатний, сир моцарела, шинка, свіжі гриби.",
+      "price": 161,
+      "count": 1,
+      "image": "https://firebasestorage.googleapis.com/v0/b/blog-details-77f5a.appspot.com/o/images%2FLA-P_yets-1.png?alt=media&token=def2050b-c067-4168-a86d-ea12ef733965",
+      "id": 4
+    },
+    {
+      "category": {
+        "name": "salad",
+        "id": 2
+      },
+      "name": "Інсалата ді Сальмоне",
+      "description": "рукола, помідор чері, огірок, салат айсберг, соус айолі, пармезан, лосось, перепелине яйце, кунжут.",
+      "price": 144,
+      "count": 1,
+      "image": "https://firebasestorage.googleapis.com/v0/b/blog-details-77f5a.appspot.com/o/images%2FTSezar-z-kurkoyu.png?alt=media&token=e90a572f-03d9-4047-aae7-6e33fea36f8a",
+      "id": 5
+    },
+    {
+      "category": {
+        "name": "drinks",
+        "id": 3
+      },
+      "name": "Томатний сік, 1 л, ТМ “RICH”",
+      "description": "Томатний сік, 1 л, ТМ “RICH”",
+      "price": 41,
+      "count": 1,
+      "image": "https://firebasestorage.googleapis.com/v0/b/blog-details-77f5a.appspot.com/o/images%2Frich_orange.jpg?alt=media&token=a3adea8a-a2f9-42d9-a13c-f17b33cd2452",
+      "id": 6
+    },
+    {
+      "category": {
+        "id": 1,
+        "name": "pizza"
+      },
+      "name": "Маргарита",
+      "description": "соус томатний, сир моцарела, помідори.",
+      "price": 119,
+      "count": 1,
+      "image": "https://firebasestorage.googleapis.com/v0/b/blog-details-77f5a.appspot.com/o/images%2F%D0%A2%D0%B5%D1%85%D0%B0%D1%81_300dpi-min.jpg?alt=media&token=0e432a25-b46c-4841-9fca-3e6b1057b248",
+      "id": 7
+    }
+  ],
+  "orders": [
+    {
+      "userName": "y.boyko",
+      "userEmail": "admin@gmail.com",
+      "date": "2020-11-26T17:34:52.488Z",
+      "userNumber": "4535w",
+      "userLocation": "vhvgvg ",
+      "id": 1
+    },
+    {
+      "userName": "Yura",
+      "userEmail": "admin@gmail.com",
+      "date": "2020-11-26T17:41:17.317Z",
+      "userNumber": "0974498935",
+      "userLocation": "Shevchenka,15,57",
+      "payment": "Готівка",
+      "id": 2
+    },
+    {
+      "userName": "y.boyko",
+      "userEmail": "user@gmail.com",
+      "date": "2020-11-29T17:10:52.093Z",
+      "userNumber": "0974498935",
+      "userLocation": "Shevchenka, 15, 57",
+      "payment": "Готівка",
+      "id": 3
+    }
+  ]
+}

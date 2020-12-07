@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "blog-details-77f5a": {
+      "hosting": {
+        "hw22": [
+          "blog-details-77f5a"
+        ]
+      }
+    }
+  }
+}
